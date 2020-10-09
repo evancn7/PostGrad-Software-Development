@@ -9,30 +9,34 @@ public class LuhnsAlgorithm
   {
     Scanner scan = new Scanner(System.in);
     long userInput = scan.nextLong();
-    System.out.println(luhnCheck(userInput));
+    if (luhnCheck(userInput)){
+      System.out.println("VALID");
+    }
+    else{
+      System.out.println("INVALID");
+    }
+
   }
   public static boolean luhnCheck(long number)
   {
-    long checkSum = number % 10;
-    long numberToValidate = number / 10;
     int sum = 0;
-    int count = 1;
+    int count = 0;
     long digit;
-    while (numberToValidate>0)
+    while (number>0)
     {
       if (count%2==0){
-        digit = numberToValidate % 10;
+        digit = number % 10;
       }
       else{
-        digit = (numberToValidate % 10) * 2;
+        digit = (number % 10) * 2;
       }
       if (digit > 9){
         digit = digit - 9;
       }
       sum += digit;
       count++;
-      numberToValidate = numberToValidate / 10;
+      number = number / 10;
     }
-    return (sum*9)%10==checkSum;
+    return sum%10==0;
   }
 }
