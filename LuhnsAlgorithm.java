@@ -3,27 +3,20 @@ Luhn's algorithm to validate credit card numbers
 */
 import java.util.Scanner;
 
-public class LuhnsAlgorithm
-{
-  public static void main(String[] args)
-  {
+public class LuhnsAlgorithm{
+  public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
     long userInput = scan.nextLong();
-    if (luhnCheck(userInput)){
-      System.out.println("VALID");
-    }
-    else{
-      System.out.println("INVALID");
-    }
-
+    System.out.println(luhnCheck(userInput));
   }
-  public static boolean luhnCheck(long number)
-  {
+  public static String luhnCheck(long number){
     int sum = 0;
     int count = 0;
     long digit;
-    while (number>0)
-    {
+    // assume that the card number is invalid to begin
+    String message = new String("INVALID");
+    // iterate through the number when you run out of number than number<0
+    while (number>0){
       if (count%2==0){
         digit = number % 10;
       }
@@ -37,6 +30,9 @@ public class LuhnsAlgorithm
       count++;
       number = number / 10;
     }
-    return sum%10==0;
+    if (sum%10==0){
+      message = "VALID";
+    }
+    return message;
   }
 }
