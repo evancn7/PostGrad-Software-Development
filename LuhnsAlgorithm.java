@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class LuhnsAlgorithm{
   public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
+    System.out.print("Please enter the card number: ");
     long userInput = scan.nextLong();
     System.out.println(luhnCheck(userInput));
   }
@@ -14,7 +15,7 @@ public class LuhnsAlgorithm{
     int count = 0;
     long digit;
     // assume that the card number is invalid to begin
-    String message = new String("INVALID");
+    String message = new String("The card number is INVALID");
     // iterate through the number when you run out of number than number<0
     while (number>0){
       if (count%2==0){
@@ -31,7 +32,7 @@ public class LuhnsAlgorithm{
       number = number / 10;
     }
     if (sum%10==0){
-      message = "VALID";
+      message = "The card number is VALID";
     }
     return message;
   }
