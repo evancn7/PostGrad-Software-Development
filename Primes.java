@@ -10,6 +10,7 @@ public class Primes {
         Scanner scan = new Scanner(System.in);
         int lower = scan.nextInt();
         int upper = scan.nextInt();
+        scan.close();
         // swap the values if upper bound is entered first
         if (lower > upper){
             int temp;
