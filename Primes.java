@@ -5,12 +5,12 @@ For example, the quantity of prime numbers that exist between 7 and 19 is 5
 import java.util.Scanner;
 public class Primes {
     public static void main(String args[] ) throws Exception {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-        final long startTime = System.currentTimeMillis();
+        /* Enter code here. Read input from STDIN. Print output to STDOUT */
         Scanner scan = new Scanner(System.in);
         int lower = scan.nextInt();
         int upper = scan.nextInt();
         scan.close();
+        final long startTime = System.currentTimeMillis();
         // swap the values if upper bound is entered first
         if (lower > upper){
             int temp;
@@ -33,7 +33,7 @@ public class Primes {
         }
         numPrimes(array);
         final long endTime = System.currentTimeMillis();
-        System.out.println("Execution time: "+(endTime - startTime));
+        System.out.println("Execution time: "+((endTime - startTime) * 0.001));
     }
     public static void numPrimes(int[] array){
         int count=0;
