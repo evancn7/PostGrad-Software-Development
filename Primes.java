@@ -3,6 +3,7 @@ of prime numbers that exist in that range, inclusive of the specified boundaries
 For example, the quantity of prime numbers that exist between 7 and 19 is 5
 (namely 7, 11, 13, 17 and 19)*/
 import java.util.Scanner;
+import java.lang.Math;
 public class Primes {
     public static void main(String args[] ) throws Exception {
         /* Enter code here. Read input from STDIN. Print output to STDOUT */
@@ -21,7 +22,7 @@ public class Primes {
         // declare array with the boundaries
         int[] array = new int[upper-lower+1];
         int pos = 0;
-        // fill array with values between the bounsaries skipping even numbers
+        // fill array with values between the boundaries skipping even numbers
         for (int i=lower; i<=upper; i++){
             if (i > 3 && i % 2 == 0){
                 continue;
@@ -42,7 +43,7 @@ public class Primes {
                 count++;
             }
             else if(array[i]>3){
-                int limiter=array[i]/2;
+                int limiter= (int) Math.sqrt(array[i]);
                 boolean flag=true;
                 for (int j=2;j<=limiter;j++){
                     if (array[i]%j==0){

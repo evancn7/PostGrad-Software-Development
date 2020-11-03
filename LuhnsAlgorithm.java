@@ -7,7 +7,7 @@ public class LuhnsAlgorithm{
   public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
     System.out.print("Please enter the card number: ");
-    long userInput = scan.nextLong();
+    long userInput = scan.nextLong();scan.close();
     System.out.println(luhnCheck(userInput));
   }
   public static String luhnCheck(long number){

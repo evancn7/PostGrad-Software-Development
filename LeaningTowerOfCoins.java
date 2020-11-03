@@ -6,6 +6,7 @@ public class LeaningTowerOfCoins{
     double radius = scan.nextDouble();
     double thickness = scan.nextDouble();
     double targetDistance = scan.nextDouble();
+    scan.close();
     System.out.println(coinCalculation(radius, thickness, targetDistance));
   }
   public static long coinCalculation(double radius, double thickness, double targetDistance){
