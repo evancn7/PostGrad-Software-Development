@@ -22,10 +22,8 @@ public class StringSort{
     // start of bubbleSort
     final long startTime = System.currentTimeMillis();
     String[] newArray = bubbleSort(array);
+    System.out.println(newArray[param2]);
     System.out.println("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
-    for (String word : newArray){
-      System.out.println(word);
-    }
   }
 
   public static String[] bubbleSort(String[] array){
