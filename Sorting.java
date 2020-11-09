@@ -11,11 +11,11 @@ public class Sorting{
       System.out.print(i+", ");
     }
     System.out.println();
-    selectionSort(array);
+    int[] newArray = selectionSort(array);
 
-    // for (int i: newArray){
-    //   System.out.print(i+", ");
-    // }
+    for (int i: newArray){
+      System.out.print(i+", ");
+    }
   }
 
   // implementation of the bubble sort algorithm
@@ -35,25 +35,23 @@ public class Sorting{
   }
 
   // implementation of the selectionSort algorithm
-  public static void selectionSort(int[] array){
-    int lowestValue = array[0];
-    int position = 0;
-    for (int i=1; i<array.length; i++){
-      if (array[i] < lowestValue){
-        lowestValue = array[i];
-        position = i;
+  public static int[] selectionSort(int[] array){
+    for (int j=1; j<array.length; j++){
+      int lowestValue = array[j-1];
+      int position = 0;
+      for (int i=j; i<array.length; i++){
+        if (array[i] < lowestValue){
+          lowestValue = array[i];
+          position = i;
+          }
         }
+        System.out.println("lowest value = "+lowestValue);
+        System.out.println("@ position: "+position);
+        // swap values
+        int temp = array[position];
+        array[position] = array[j-1];
+        array[j-1] = temp;
       }
-      System.out.println("lowest value = "+lowestValue);
-      System.out.println("@ position: "+position);
-      // swap values
-      int temp = array[0];
-      array[0] = array[position];
-      array[position] = temp;
-
-      for (int elem : array){
-        System.out.print(elem+" ");
-      }
-
+      return array;
     }
 }
