@@ -24,14 +24,10 @@ public class MonteCarloCoPrime{
     return flag;
   }
 
-  public static int findHighestCD(int a, int b){
-    if (b != 0){
-      return findHighestCD(b, a % b);
+  public static int gcd(int a, int b) {
+        if (b == 0) return a;
+        else return gcd(b, a % b);
     }
-    else{
-      return a;
-    }
-  }
 
   public static void monteCarloLoop(int divisor1, int divisor2, int numTrials){
     // set variable so a test for probability is possible
@@ -43,7 +39,7 @@ public class MonteCarloCoPrime{
       // generate a random number using divisors
       int candidate1 = divisor1 * r.nextInt(numTrials);
       int candidate2 = divisor2 * r.nextInt(numTrials);
-      if (findHighestCD(candidate1, candidate2) == 1){
+      if (gcd(candidate1, candidate2) == 1){
         trueCases++;
     }
     prob = (double)trueCases/numTrials;
