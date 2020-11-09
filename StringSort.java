@@ -13,16 +13,36 @@ public class StringSort{
     String[] array = new String[param1];
     scan.nextLine();
     for (int i=0; i<array.length; i++){
-      String input = scan.nextLine();  ;
+      String input = scan.nextLine();
       array[i] = input;
     }
-    // for (String word : array){
-    //   System.out.println(word);
-    // }
+    scan.close();
+    // end of user input
+
+    // start of bubbleSort
+    final long startTime = System.currentTimeMillis();
+    String[] newArray = bubbleSort(array);
+    System.out.println("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
+    for (String word : newArray){
+      System.out.println(word);
+    }
   }
-  public static void bubbleSort(String[] array){
-    // pass
+
+  public static String[] bubbleSort(String[] array){
+    for (int j=0; j<array.length; j++){
+      int i = 0;
+      while (i < array.length-1){
+        if (array[i].length() > array[i+1].length()){
+          String temp = array[i+1];
+          array[i+1] = array[i];
+          array[i] = temp;
+        }
+        i++;
+      }
+    }
+    return array;
   }
+
   public static void selectionSort(String[] array){
     // pass
   }
