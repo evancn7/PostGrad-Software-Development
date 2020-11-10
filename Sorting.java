@@ -2,20 +2,21 @@ import java.util.*;
 public class Sorting{
   public static void main(String[] args){
     Random r = new Random();
-    int[] array = new int[10];
+    int[] array = new int[5];
     for (int i=0; i<array.length; i++){
       array[i] = r.nextInt(100);
     }
 
     for (int i: array){
-      System.out.print(i+", ");
+      System.out.print(i+" ");
     }
     System.out.println();
     int[] newArray = selectionSort(array);
 
     for (int i: newArray){
-      System.out.print(i+", ");
+      System.out.print(i+" ");
     }
+    System.out.println();
   }
 
   // implementation of the bubble sort algorithm
@@ -36,21 +37,20 @@ public class Sorting{
 
   // implementation of the selectionSort algorithm
   public static int[] selectionSort(int[] array){
-    for (int j=1; j<array.length; j++){
-      int lowestValue = array[j-1];
-      int position = 0;
-      for (int i=j; i<array.length; i++){
-        if (array[i] < lowestValue){
-          lowestValue = array[i];
-          position = i;
-          }
+    int pointer = 0;
+    int indexLowestValue = 0;
+      while (pointer < array.length){
+        int lowestValue = array[pointer];
+        for (int i=pointer; i<array.length; i++){
+          if (array[i] <= lowestValue){
+            lowestValue = array[i];
+            indexLowestValue = i;
         }
-        System.out.println("lowest value = "+lowestValue);
-        System.out.println("@ position: "+position);
-        // swap values
-        int temp = array[position];
-        array[position] = array[j-1];
-        array[j-1] = temp;
+      }
+      int temp = array[pointer];
+      array[pointer] = array[indexLowestValue];
+      array[indexLowestValue] = temp;
+      pointer++;
       }
       return array;
     }
