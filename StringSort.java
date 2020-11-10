@@ -19,7 +19,7 @@ public class StringSort{
     scan.close();
     // end of user input
 
-    // start of bubbleSort
+    // start of sorting
     final long startTime = System.currentTimeMillis();
     String[] newArray = selectionSort(array);
     System.out.println(newArray[param2]);
