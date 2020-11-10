@@ -21,9 +21,10 @@ public class StringSort{
 
     // start of bubbleSort
     final long startTime = System.currentTimeMillis();
-    String[] newArray = bubbleSort(array);
+    String[] newArray = selectionSort(array);
     System.out.println(newArray[param2]);
-    System.out.println("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
+    System.out.println
+    ("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
   }
 
   public static String[] bubbleSort(String[] array){
@@ -41,9 +42,25 @@ public class StringSort{
     return array;
   }
 
-  public static void selectionSort(String[] array){
-    // pass
+  public static String[] selectionSort(String[] array){
+    int pointer = 0;
+    int indexLowestValue = 0;
+      while (pointer < array.length){
+        int lowestValue = array[pointer].length();
+        for (int i=pointer; i<array.length; i++){
+          if (array[i].length() <= lowestValue){
+            lowestValue = array[i].length();
+            indexLowestValue = i;
+        }
+      }
+      String temp = array[pointer];
+      array[pointer] = array[indexLowestValue];
+      array[indexLowestValue] = temp;
+      pointer++;
+      }
+      return array;
   }
+
   public static void insertionSort(String[] array){
     // pass
   }
