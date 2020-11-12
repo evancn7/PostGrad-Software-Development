@@ -26,7 +26,6 @@ public class StringSort{
     // start of sorting
     final long startTime = System.currentTimeMillis();
     String[] newArray = bubbleSort(array);
-    System.out.println();
     System.out.println(newArray[param2]); // param2 here
     System.out.println
     ("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
@@ -44,10 +43,20 @@ public class StringSort{
         /* condition to test for two words being equal, rearranging in reverse
         alphabetical order if true*/
         else if (array[i].length() == array[i+1].length()){
-          if (array[i].charAt(0) < array[i+1].charAt(0)){
-            String temp = array[i+1];
-            array[i+1] = array[i];
-            array[i] = temp;
+          int l = 0;
+          while (l<array[i].length()){
+            if (array[i].charAt(l) == array[i+1].charAt(l)){
+              l++;
+            }
+            else if (array[i].charAt(l) < array[i+1].charAt(l)){
+              String temp = array[i+1];
+              array[i+1] = array[i];
+              array[i] = temp;
+              break;
+            }
+            else{
+              break;
+            }
           }
         }
         i++;
