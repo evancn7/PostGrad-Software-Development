@@ -12,21 +12,32 @@ public class StringSort{
   public static void main(String[] args){
     // gather the data from user
     Scanner scan = new Scanner(System.in);
+    System.out.print("Enter a length for the list of the words: ");
     int param1 = scan.nextInt();
+    System.out.print("Enter a position in the list: ");
     int param2 = scan.nextInt();
     // use data to create array with a series of strings also from user input
     String[] array = new String[param1];
     scan.nextLine();
+    System.out.println("Enter the words seperated by enter: ");
     for (int i=0; i<array.length; i++){
       String input = scan.nextLine();
       array[i] = input;
     }
     scan.close();
     // end of user input
+    for (String w : array){
+      System.out.print(w+" ");
+    }
     // start of sorting
     final long startTime = System.currentTimeMillis();
     String[] newArray = bubbleSort(array);
-    System.out.println(newArray[param2]); // param2 here
+    System.out.println();
+    for (String n : array){
+      System.out.print(n+" ");
+    }
+    System.out.println();
+    System.out.println(newArray[param2-1]); // param2 here
     System.out.println
     ("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
   }
