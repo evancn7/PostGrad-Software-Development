@@ -1,30 +1,33 @@
-/* input is two integers, first integer represents the length of the array, the
-second integer represents a position in the array. This input is followed by a
-series of strings. The output is the string at position of second integer*/
+/* input is two integers,
+the first integer represents the length of the array,
+the second integer represents a position in the array.
+This input is followed by a series of strings.
+The output is the string at position of second integer
+Sort words in ascending order according to their length
+and if words are the same length, sort in reverse alphabetical order*/
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 public class StringSort{
   public static void main(String[] args){
     // gather the data from user
-    // Scanner scan = new Scanner(System.in);
-    // int param1 = scan.nextInt();
-    // int param2 = scan.nextInt();
-    // // use data to create array with a series of strings also from user input
-    // String[] array = new String[param1];
-    // scan.nextLine();
-    // for (int i=0; i<array.length; i++){
-    //   String input = scan.nextLine();
-    //   array[i] = input;
-    // }
-    // scan.close();
+    Scanner scan = new Scanner(System.in);
+    int param1 = scan.nextInt();
+    int param2 = scan.nextInt();
+    // use data to create array with a series of strings also from user input
+    String[] array = new String[param1];
+    scan.nextLine();
+    for (int i=0; i<array.length; i++){
+      String input = scan.nextLine();
+      array[i] = input;
+    }
+    scan.close();
     // end of user input
-
     // start of sorting
     final long startTime = System.currentTimeMillis();
-    String[] newArray = selectionSort(randomStringArray(15_000));
-    // String[] newArray = bubbleSort(randomStringArray(1000));
-    System.out.println(newArray[5]); // param2 here
+    String[] newArray = bubbleSort(array);
+    System.out.println();
+    System.out.println(newArray[param2]); // param2 here
     System.out.println
     ("Execution time: "+((System.currentTimeMillis() - startTime) * 0.001));
   }
@@ -37,6 +40,15 @@ public class StringSort{
           String temp = array[i+1];
           array[i+1] = array[i];
           array[i] = temp;
+        }
+        /* condition to test for two words being equal, rearranging in reverse
+        alphabetical order if true*/
+        else if (array[i].length() == array[i+1].length()){
+          if (array[i].charAt(0) < array[i+1].charAt(0)){
+            String temp = array[i+1];
+            array[i+1] = array[i];
+            array[i] = temp;
+          }
         }
         i++;
       }
