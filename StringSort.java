@@ -14,7 +14,7 @@ public class StringSort{
     Scanner scan = new Scanner(System.in);
     System.out.print("Enter a length for the array of the words: ");
     int param1 = scan.nextInt();
-    System.out.print("Enter a position in the list: ");
+    System.out.print("Enter a position in the array: ");
     int param2 = scan.nextInt();
     // use data to create array with a series of strings also from user input
     String[] array = new String[param1];
