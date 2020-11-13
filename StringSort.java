@@ -12,7 +12,7 @@ public class StringSort{
   public static void main(String[] args){
     // gather the data from user
     Scanner scan = new Scanner(System.in);
-    System.out.print("Enter a length for the list of the words: ");
+    System.out.print("Enter a length for the array of the words: ");
     int param1 = scan.nextInt();
     System.out.print("Enter a position in the list: ");
     int param2 = scan.nextInt();
