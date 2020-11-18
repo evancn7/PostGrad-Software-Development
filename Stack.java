@@ -3,7 +3,7 @@ public class Stack {
       private int maxSize;
       private int[] stackArray;
       private int top;
-    
+
       // general constructor
       public Stack(int s){
         maxSize = s;
@@ -39,10 +39,4 @@ public class Stack {
       public void makeEmpty(){
         top = -1;
       }
-    public static void main(String[] args){
-      Stack myStack = new Stack(5);
-      myStack.push(5);
-      myStack.push(7);
-      System.out.println(myStack.pop());
-  }
 }
