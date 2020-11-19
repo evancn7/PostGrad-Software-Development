@@ -13,7 +13,7 @@ public class StackMain {
     scan.nextLine();
 
     // create loop for taking in commands from user
-    for (int i=0; i<stackLength; i++){
+    while (!userStack.isFull()){
       String command = scan.nextLine();
       String[] commandParts = command.split(" ");
       String method = commandParts[0].toLowerCase();
@@ -25,6 +25,10 @@ public class StackMain {
       else if (method.compareTo("pop") == 0 && !userStack.isEmpty()){
         userStack.pop();
       }
+    }
+    // print the stack
+    while (!userStack.isEmpty()){
+      System.out.println(userStack.pop());
     }
   }
 }
