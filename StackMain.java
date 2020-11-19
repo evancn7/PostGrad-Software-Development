@@ -25,8 +25,9 @@ public class StackMain {
     // declare variable to keep track of highest number
     int high = userStack.pop();
     while (!userStack.isEmpty()){
-      if (userStack.pop() > high){
-        high = userStack.pop();
+      int contender = userStack.pop();
+      if (contender > high){
+        high = contender;
       }
       else{
         continue;
