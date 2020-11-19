@@ -9,7 +9,7 @@ public class StackMain {
     // clear buffer
     scan.nextLine();
     // create loop for taking in commands from user
-    while (!userStack.isFull()){
+    while (stackLength > 0){
       String command = scan.nextLine();
       String[] commandParts = command.split(" ");
       String method = commandParts[0].toLowerCase();
@@ -20,6 +20,7 @@ public class StackMain {
       else if (method.compareTo("pop") == 0 && !userStack.isEmpty()){
         userStack.pop();
       }
+      stackLength--;
     }
     // create loop to find the highest number in the stack and return to user
     // declare variable to keep track of highest number
