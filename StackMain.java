@@ -22,7 +22,7 @@ public class StackMain {
       if (method.compareTo("push") == 0){
         userStack.push(Integer.parseInt(commandParts[1]));
       }
-      else if (method.compareTo("pop") == 0){
+      else if (method.compareTo("pop") == 0 && !userStack.isEmpty()){
         userStack.pop();
       }
     }
