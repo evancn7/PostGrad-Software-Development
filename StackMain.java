@@ -23,16 +23,21 @@ public class StackMain {
     }
     // create loop to find the highest number in the stack and return to user
     // declare variable to keep track of highest number
-    int high = userStack.pop();
-    while (!userStack.isEmpty()){
-      int contender = userStack.pop();
-      if (contender > high){
-        high = contender;
+    if (!userStack.isEmpty()){
+      int high = userStack.pop();
+      while (!userStack.isEmpty()){
+        int contender = userStack.pop();
+        if (contender > high){
+          high = contender;
+        }
+        else{
+          continue;
+        }
       }
-      else{
-        continue;
-      }
+      System.out.println(high);
     }
-    System.out.println(high);
+    else{
+      System.out.println("empty");
+    }
   }
 }
