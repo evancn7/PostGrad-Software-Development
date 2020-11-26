@@ -11,8 +11,6 @@ public class QueueMain{
     String s = "INSERT this\nINSERT is\nINSERT how\nINSERT to\nREMOVE\nINSERT do\nREMOVE\nINSERT it";
     Scanner scan = new Scanner(s);
     Queue myQ = new Queue(20);
-    // to keep track of the position of the front
-    int position = 0;
     // while the queue has next line, amount of commands not defined
     while (scan.hasNextLine()){
       String command = scan.nextLine();
