@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 public class QueueMain{
   public static void main(String[] args){
-    Scanner scan = new Scanner(System.in);
+    // set up for input, scanner and queue
+    String s = "INSERT this\nINSERT is\nINSERT how\nINSERT to\nREMOVE\nINSERT do\nREMOVE\nINSERT it";
+    Scanner scan = new Scanner(s);
     Queue myQ = new Queue(20);
     // to keep track of the position of the front
     int position = 0;
