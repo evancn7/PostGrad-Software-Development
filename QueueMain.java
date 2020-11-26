@@ -20,33 +20,21 @@ public class QueueMain{
       // convert command to lower case for comperison
       String method = commandSplit[0].toLowerCase();
       // once command is entered then execute the command on the queue
-      if (method.compareTo("insert") == 0){
-        /* once it is determined that command is insert
-        then take 2nd part of command */
-        myQ.insert(commandSplit[1]);
-      }
-      else if (method.compareTo("remove") == 0){
-        myQ.remove();
-        position++;
-      }
+      // once determined that command is insert then take 2nd part of command
+      if (method.compareTo("insert") == 0) myQ.insert(commandSplit[1]);
+      else myQ.remove();
     }
     scan.close();
     // end of creating the queue from commandSplit
     // find the middle value, if even then find value nearest the front
     int middleItem;
-    if (myQ.size() % 2 == 0){
-      middleItem = myQ.size() / 2 - 1;
-    }
-    else{
-      middleItem = myQ.size() / 2;
-    }
-    // print the middle item
+    if (myQ.size() % 2 == 0) middleItem = myQ.size() / 2 - 1;
+    else middleItem = myQ.size() / 2;
+
     // adjust middle item for current position
-    middleItem = middleItem + position;
-    while (position != middleItem){
-      myQ.remove();
-      position++;
-    }
+    middleItem = middleItem + myQ.frontPosition();
+    while (myQ.frontPosition() != middleItem) myQ.remove();
+
     System.out.println(myQ.remove());
   }
 }
