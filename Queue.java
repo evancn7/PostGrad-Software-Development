@@ -54,4 +54,7 @@ class Queue{
   public int size(){
     return nItems;
   }
+  public int frontPosition(){
+    return front;
+  }
 }
