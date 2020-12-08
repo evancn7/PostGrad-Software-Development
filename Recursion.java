@@ -14,6 +14,16 @@ class Recursion{
       return recursiveDivision(number%divisor*10, divisor, --nth);
     }
   }
+  public static long tribonacciDynamic(int n){
+        long[] cache = new long[n<=2 ? 3 : n+1];
+        cache[0] = 0;
+        cache[1] = 0;
+        cache[2] = 1;
+        for (int i=3; i<n+1; i++){
+        cache[i] = cache[i-1] + cache[i-2] + cache[i-3];
+        }
+        return cache[n];
+  }
 }
 
 /*
