@@ -39,7 +39,7 @@ public class Lab10{
           pos++;
         }
       }
-      // remove null values created in previous code block
+      // remove the null values created in previous code block
       int len = pos + 1;
       String[] cleanArray = new String[len-1];
       for (int k=0; k<len-1; k++){
