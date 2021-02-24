@@ -55,6 +55,13 @@ public class HuffmanEncoding {
             localRoot.leftChild = firstTree.root;
             localRoot.rightChild = secondTree.root;
 
+            if (firstTree.root.smallestLetter<secondTree.root.smallestLetter){
+                combo.root.smallestLetter = firstTree.root.smallestLetter;
+            }
+            else{
+                combo.root.smallestLetter = secondTree.root.smallestLetter;
+            }
+
             PQ.add(combo);
         }
 
@@ -62,7 +69,7 @@ public class HuffmanEncoding {
 
         // now there's only one tree left - get its codes
         for (int l=0; l<sentence.length(); l++){
-            System.out.println(HuffmanTree.getCode(sentence.charAt(l)));
+            System.out.print(HuffmanTree.getCode(sentence.charAt(l)));
         }
         System.out.println();
     }
