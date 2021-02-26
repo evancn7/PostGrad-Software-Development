@@ -6,44 +6,16 @@ class Collatz{
         String sampleInput = "4\n9\n3";
         Scanner scan = new Scanner(sampleInput);
 
-        int lower = scan.nextInt();
+        int lefter = scan.nextInt();
         int upper = scan.nextInt();
         int index = scan.nextInt();
 
-        Array array = new Array(lower, upper, index);
+        int[] array = new int[upper - lefter + 1];
 
-        array.getCollatzArray();
-
-
-        int left = 0;
-        int right = array.array.length - 1;
-
-        array.recQuickSort(left, right);
-
-
-        for (int n : array.array) System.out.println(n);
-
-    } // end main
-}
-
-class Array{
-    int[] array;
-    int lower;
-    int upper;
-    int index;
-
-    Array(int lower, int upper, int index){
-        this.lower = lower;
-        this.upper = upper;
-        this.index = index;
-        array = new int[upper - lower + 1];
-    }
-
-    void getCollatzArray(){
         int arrayPos = 0; // keep track of the array postion for inserting
 
-        while (lower <= upper){
-            int comparable = lower;
+        while (lefter <= upper){
+            int comparable = lefter;
             int count = 0;
             // comparable is changing in this loop
             while (comparable != 1){
@@ -58,41 +30,48 @@ class Array{
             } // end inner while
             array[arrayPos] = count; // set current position to count
             arrayPos++; // move to next postion
-            lower++;
+            lefter++;
         } // end outer while
+
+
+        int left = 0;
+        int right = array.length - 1;
+
+        qSort(array, left, right);
+
+        System.out.println(array[index - 1]);
+    } // end main
+
+    static void qSort(int a[], int left, int right){
+        if (left < right){
+        /* pi is parting index, arr[pi] is now at right place */
+            int p = part(a, left, right);
+
+            qSort(a, left, p - 1);
+            qSort(a, p + 1, right);
+        }
     }
-    int createPart(int left, int right, long pivot){
-        int leftPart = left - 1;
-        int rightPart = right;
 
-        while (true){
-            while (array[++leftPart] < pivot){}
-            while (rightPart > 0 && array[--rightPart] > pivot){}
+    static int part(int a[], int left, int right){
+        // pivot (Element to be placed at right position)
+        int pivot = a[right];
 
-            if (leftPart >= rightPart){
-                break;
+        int i = (left - 1);  // Index of smaller element and indicates the right position of pivot found so far
+
+        for (int j = left; j <= right- 1; j++){
+            // If current element is smaller than the pivot
+            if (a[j] < pivot){
+                i++;    // increment index of smaller element
+
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
             }
-            else{
-                int temp = array[leftPart];
-                array[leftPart] = array[rightPart];
-                array[rightPart] = temp;
-            }
         }
-        int temp = array[leftPart];
-        array[leftPart] = array[rightPart];
-        array[rightPart] = temp;
-        return leftPart;
-    }
-    void recQuickSort(int left, int right){
-        if (right - left <= 0){
-            return;
-        }
-        else{
-            long pivot = array[right];
+        int temp = a[i+1];
+        a[i+1] = a[right];
+        a[right] = temp;
 
-            int part = createPart(left, right, pivot);
-            recQuickSort(left, part - 1);
-            recQuickSort(part + 1, right);
-        }
+        return (i + 1);
     }
 }
