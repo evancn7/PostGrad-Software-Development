@@ -5,7 +5,9 @@ class ElGamal {
     public static void main(String[] args) {
 
         // "150001 7 66436\n90429 57422"
-        Scanner scan = new Scanner(System.in);
+        // "24852977 2744 8414508\n15268076 743675"
+        // Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner("24852977 2744 8414508\n15268076 743675");
 
         String alice = scan.nextLine();
         String bob = scan.nextLine();
@@ -41,7 +43,7 @@ class ElGamal {
     }
 
     static int bruteForceSearch(String generator, String modulus, String prod) {
-        int i = 1;
+        int i = 0;
 
         // alice = 7 ^ x % 150001 = 66436
 
