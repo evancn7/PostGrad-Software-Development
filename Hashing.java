@@ -10,41 +10,18 @@ public class Hashing {
     // BigInteger phase2 = phase1.multiply(c2);
     // BigInteger phase3 = phase2.mod(p);
 
-    String input = "cats";
+    String[] a = {"cat", "hello"};
 
-    int total = 0;
-    int moddy = 100_000;
-    for (int i=0; i<input.length(); i++){
-      char letter = input.charAt(i);
-      // letter value as big int
-      BigInteger letter1 =
-      new BigInteger(String.valueOf(getLetterValue(letter)));
-      // power product as big int
-      BigInteger powerProduct =
-      new BigInteger(String.valueOf( (long) Math.pow( 27, i ) ));
+    String[] ourHashArray = Solution.fill(100_000, a);
 
-      // multiply letter value by power product
-      BigInteger a = letter1.multiply(powerProduct); // (value, power)
+    System.out.println( ourHashArray[14610] );
+    System.out.println( ourHashArray[85261] );
 
-      total += a.intValue();
-    }
-    long res = total % moddy;
-    System.out.println( res );
-  }// End of void main
+    HashTable HT = new HashTable(ourHashArray);
 
-
-  static int getLetterValue(char toFind){
-    String alpha = "abcdefghijklmonpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    int pointer = 0;
-    while (true){
-      if ( alpha.charAt(pointer) == toFind ) {
-        return pointer + 1;
-      } else {
-        pointer++;
-      }
-    }
-  }//End of letter value
-
+    boolean bool = HT.check( 14610, "cat" );
+    System.out.println(bool);
+  }//End void class
 
 }//End of class
 
@@ -72,15 +49,52 @@ class HashTable{
 class Solution{
 
   public int find(int size, HashTable mytable, String word){
-
-
+    return 1;
   }
-  public String [] fill(int size, String[] array){
+  static String [] fill(int size, String[] array){
 
-  String[] hashTable = new String[size];
-  //loop in here
-  return hashTable;
-}
+    String[] hashTable = new String[size]; // create the table
 
+    for (int j=0; j<array.length ; j++ ) {
 
+      String input = array[j]; //cat
+
+      int total = 0;
+      int moddy = size; // hashTable size
+
+      for (int i=0; i<input.length(); i++){
+        char letter = input.charAt(i);
+        // letter value as big int
+        BigInteger letter1 =
+        new BigInteger(String.valueOf(getLetterValue(letter)));
+        // power product as big int
+        BigInteger powerProduct =
+        new BigInteger(String.valueOf( (long) Math.pow( 27, i ) ));
+
+        // multiply letter value by power product
+        BigInteger a = letter1.multiply(powerProduct); // (value, power)
+        // int letterHash =
+
+        total += a.intValue();
+      } // end inner loop
+
+      int hashIndex = (int) (total % moddy);
+
+      System.out.println(hashIndex);
+      // if ( hashTable[hashIndex] != null {} )
+      hashTable[hashIndex] = input;
+    } // end outer loop
+    return hashTable;
+  }
+  static int getLetterValue(char toFind){
+    String alpha = "abcdefghijklmonpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int pointer = 0;
+    while (true){
+      if ( alpha.charAt(pointer ) == toFind ) {
+        return pointer + 1; // plus one to match letter to number as normal
+      } else {
+        pointer++;
+      }
+    }
+  } // end letter value
 }
