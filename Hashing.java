@@ -4,7 +4,6 @@ import java.math.BigInteger;
 import java.lang.Object.*;
 
 class HashTable{
-
   private String[] hashTable;
   private int total = 0;
 
@@ -23,40 +22,70 @@ class HashTable{
     }
   }
 
+  public int getTotal(){
+    return total;
+  }
+
 }
 
 
-class Hashing{
-
+class Hashing{ // Solution
   public static void main(String[] args) {
-    // System.out.println(Long.MAX_VALUE); // 9.223.372.036.854.775.807
-    // BigInteger phase3 = phase2.mod(p);
 
-    String[] a = {"cat", "hello"};
+    String[] a = {"cat", "hello", "dog"};
+    String[] hArray = fill(100_000, a);
 
-    String[] ourHashArray = Solution.fill(100_000, a);
+    HashTable HT = new HashTable( hArray );
 
-    HashTable HT = new HashTable(ourHashArray);
-
-    boolean bool = HT.check( 14610, "cat" );
-    
-    System.out.println(bool);
+    int s = 100_000;
+    find( s, HT, a[1] );
   } // end main
 
-  public int find(int size, HashTable mytable, String word){
-    return 1;
-  }
+  public static void find(int size, HashTable mytable, String word){
 
-  static String [] fill(int size, String[] array){
+
+      int total = 0;
+      int moddy = size; // same as hashTable size
+
+      for (int i=0; i<word.length(); i++){
+        char letter = word.charAt(i);
+        // letter value as big int
+        BigInteger letter1 =
+        new BigInteger(String.valueOf(getLetterValue(letter)));
+        // power product as big int
+        BigInteger powerProduct =
+        new BigInteger(String.valueOf( (long) Math.pow( 27, i ) ));
+
+        // multiply letter value by power product
+        BigInteger a = letter1.multiply(powerProduct); // (value, power)
+
+        total += a.intValue();
+      } // end inner loop
+
+      int hashIndex = (int) (total % moddy);
+
+      System.out.println(hashIndex);
+
+      boolean bool = mytable.check( hashIndex, word );
+      System.out.println(bool);
+
+    }
+
+
+
+  public static String[] fill(int size, String[] array){
 
     String[] hashTable = new String[size]; // create the table
 
+    // HashTable HT = new HashTable(ourHashArray);
+    // String[] ht = HT.hashTable
+
     for (int j=0; j<array.length ; j++ ) {
 
-      String input = array[j]; //cat
+      String input = array[j];
 
       int total = 0;
-      int moddy = size; // hashTable size
+      int moddy = size; // same as hashTable size
 
       for (int i=0; i<input.length(); i++){
         char letter = input.charAt(i);
@@ -69,16 +98,23 @@ class Hashing{
 
         // multiply letter value by power product
         BigInteger a = letter1.multiply(powerProduct); // (value, power)
-        // int letterHash =
 
         total += a.intValue();
       } // end inner loop
 
       int hashIndex = (int) (total % moddy);
 
-      System.out.println(hashIndex);
-      // if ( hashTable[hashIndex] != null {} )
-      hashTable[hashIndex] = input;
+      // linear probe
+      if ( hashTable[hashIndex] != null ){
+        while ( hashTable[hashIndex] != null ){
+          ++hashIndex;
+        } // exits when index matches slot that is null
+        hashTable[hashIndex] = input;
+      }
+      else{
+        hashTable[hashIndex] = input;
+      }
+
     } // end outer loop
     return hashTable;
   }
@@ -96,3 +132,6 @@ class Hashing{
   } // end letter value
 
 }
+// for(int i=0; i<size; i++){
+//
+//   if(mytable.check(i, word)){
