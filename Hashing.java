@@ -3,29 +3,8 @@ import java.math.*;
 import java.math.BigInteger;
 import java.lang.Object.*;
 
-public class Hashing {
-  public static void main(String[] args) {
-    // System.out.println(Long.MAX_VALUE); // 9.223.372.036.854.775.807
-
-    // BigInteger phase2 = phase1.multiply(c2);
-    // BigInteger phase3 = phase2.mod(p);
-
-    String[] a = {"cat", "hello"};
-
-    String[] ourHashArray = Solution.fill(100_000, a);
-
-    System.out.println( ourHashArray[14610] );
-    System.out.println( ourHashArray[85261] );
-
-    HashTable HT = new HashTable(ourHashArray);
-
-    boolean bool = HT.check( 14610, "cat" );
-    System.out.println(bool);
-  }//End void class
-
-}//End of class
-
 class HashTable{
+
   private String[] hashTable;
   private int total = 0;
 
@@ -43,14 +22,31 @@ class HashTable{
       return false;
     }
   }
+
 }
 
 
-class Solution{
+class Hashing{
+
+  public static void main(String[] args) {
+    // System.out.println(Long.MAX_VALUE); // 9.223.372.036.854.775.807
+    // BigInteger phase3 = phase2.mod(p);
+
+    String[] a = {"cat", "hello"};
+
+    String[] ourHashArray = Solution.fill(100_000, a);
+
+    HashTable HT = new HashTable(ourHashArray);
+
+    boolean bool = HT.check( 14610, "cat" );
+    
+    System.out.println(bool);
+  } // end main
 
   public int find(int size, HashTable mytable, String word){
     return 1;
   }
+
   static String [] fill(int size, String[] array){
 
     String[] hashTable = new String[size]; // create the table
@@ -86,6 +82,7 @@ class Solution{
     } // end outer loop
     return hashTable;
   }
+
   static int getLetterValue(char toFind){
     String alpha = "abcdefghijklmonpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     int pointer = 0;
@@ -97,4 +94,5 @@ class Solution{
       }
     }
   } // end letter value
+
 }
