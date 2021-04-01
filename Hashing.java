@@ -16,7 +16,8 @@ class HashTable{
     // check for collision
     if (hashTable[ slot ].equals(check)){
       return true;
-    } else {
+    }
+    else {
       total++; // increment for collisions
       return false;
     }
@@ -32,13 +33,13 @@ class HashTable{
 class Hashing{ // Solution
   public static void main(String[] args) {
 
-    String[] a = {"cat", "hello", "dog"};
+    String[] a = {"hello", "hello", "hello"};
     String[] hArray = fill(100_000, a);
 
     HashTable HT = new HashTable( hArray );
 
     int s = 100_000;
-    find( s, HT, a[1] );
+    find( s, HT, "cheese" );
   } // end main
 
   public static void find(int size, HashTable mytable, String word){
@@ -64,12 +65,9 @@ class Hashing{ // Solution
 
       int hashIndex = (int) (total % moddy);
 
-      System.out.println(hashIndex);
+      
 
-      boolean bool = mytable.check( hashIndex, word );
-      System.out.println(bool);
-
-    }
+      }
 
 
 
@@ -114,10 +112,19 @@ class Hashing{ // Solution
       else{
         hashTable[hashIndex] = input;
       }
+      int c = 0;
+      while ( c<hashTable.length ) {
+        if ( hashTable[c] == null ){
+          hashTable[c] = "";
+          c++;
+        } else c++;
+      }
 
-    } // end outer loop
-    return hashTable;
+
+
   }
+  return hashTable;
+}
 
   static int getLetterValue(char toFind){
     String alpha = "abcdefghijklmonpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
