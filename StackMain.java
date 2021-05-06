@@ -22,6 +22,7 @@ public class StackMain {
       }
       stackLength--;
     }
+    scan.close();
     // create loop to find the highest number in the stack and return to user
     // declare variable to keep track of highest number
     if (!userStack.isEmpty()){

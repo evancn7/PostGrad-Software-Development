@@ -9,6 +9,7 @@ class GreatCircleDistance{
     // while new input add coordinate to array but convert it to radians first
     while( pos < coords.length ) coords[pos++] = degToRad( s.nextDouble() );
     System.out.println( getDistance( coords ) );
+    s.close();
     // System.out.println( round ( getDistance( coordinates ) ) );
   }
   static double getDistance(double[] coords){

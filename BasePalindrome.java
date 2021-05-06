@@ -5,6 +5,7 @@ class BasePalindrome{
   public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
     long number = scan.nextLong();
+    scan.close();
 
     int total = 0;
     for (long i = 2; i <=10; i++) {

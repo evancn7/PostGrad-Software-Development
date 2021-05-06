@@ -8,7 +8,8 @@ class Collatz{
 
         int lower = scan.nextInt();
         int upper = scan.nextInt();
-        int index = scan.nextInt();
+        // int index = scan.nextInt();
+        scan.close();
 
         C[] array = new C[upper - lower + 1];
         int arrayPos = 0; // keep track of the array postion for inserting

@@ -1,7 +1,7 @@
-import java.util.*;
-import java.math.*;
+// import java.util.*;
+// import java.math.*;
 import java.math.BigInteger;
-import java.lang.Object.*;
+// import java.lang.Object.*;
 
 class HashTable{
   private String[] hashTable;

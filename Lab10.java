@@ -55,6 +55,7 @@ public class Lab10{
     }
     final long endTime = System.currentTimeMillis();
     System.out.println("Execution time: "+((endTime - startTime) * 0.001));
+    scan.close();
   }
   // implementation of the bubble sort algorithm
   public static String[][] bubbleSort(String[][] array){

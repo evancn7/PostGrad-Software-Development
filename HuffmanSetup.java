@@ -1,7 +1,9 @@
 import java.util.*;
 class HuffmanSetUp{
     public static void main(String[] args){
-        String testCase = new Scanner(System.in).nextLine();
+        Scanner scan = new Scanner(System.in);
+        String testCase = scan.nextLine();
+        scan.close();
         ArrayList<Frequency> output = count(testCase);
         Collections.sort(output, new Sortbycount());
         output.forEach((f) -> System.out.println(f));

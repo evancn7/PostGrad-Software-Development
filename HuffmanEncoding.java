@@ -4,6 +4,7 @@ public class HuffmanEncoding {
     public static void main(String args[]) throws Exception {
         Scanner in = new Scanner(System.in);
         String sentence = in.nextLine();
+        in.close();
 
         int[] array = new int[256]; //an array to store all the frequencies
 
